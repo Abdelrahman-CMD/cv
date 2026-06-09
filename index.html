@@ -183,7 +183,7 @@ button{
 }
 
 section{
-  padding-block: clamp(64px, 10vw, 128px);
+  padding-block: clamp(56px, 10vw, 128px);
   border-bottom: 1px solid var(--line-faint);
 }
 section:last-of-type{ border-bottom: 0 }
@@ -202,7 +202,7 @@ h1, h2, h3{ margin: 0; font-weight: 300 }
   letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--ink-mute);
-  margin-bottom: var(--s-7);
+  margin-bottom: var(--s-6);
 }
 .eyebrow::before{
   content: "";
@@ -213,7 +213,7 @@ h1, h2, h3{ margin: 0; font-weight: 300 }
 }
 
 .sec-head{
-  margin-bottom: var(--s-10);
+  margin-bottom: clamp(36px, 6vw, 64px);
 }
 .sec-head h2{
   font-family: var(--f-display);
@@ -481,6 +481,7 @@ h1, h2, h3{ margin: 0; font-weight: 300 }
 .hero h1 em{
   font-style: italic;
   font-weight: 400;
+  color: var(--accent);
 }
 .hero-lede{
   font-family: var(--f-body);
@@ -556,27 +557,40 @@ h1, h2, h3{ margin: 0; font-weight: 300 }
   flex-direction: column;
   gap: var(--s-7);
 }
+/* Bio card — frames the portrait + personal details as one cohesive block */
+.bio-card{
+  background: var(--bg-paper);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(31,41,55,.04), 0 10px 30px rgba(31,41,55,.05);
+}
+html[data-theme="dark"] .bio-card{
+  box-shadow: none;
+}
 .portrait{
   position: relative;
   margin: 0;
   width: 100%;
   max-width: 100%;
   aspect-ratio: 620 / 523;
-  border-radius: 8px;
   background: var(--bg-deep);
   overflow: hidden;
 }
 .portrait picture{
   display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
 }
 .portrait img{
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 8px;
   /* Subtle sepia: warm tone matching the navy × terracotta palette,
      not full vintage. Lower saturation, slight warm-shift. */
   filter: sepia(0.45) saturate(0.85) contrast(1.02) brightness(0.98);
@@ -665,8 +679,9 @@ html[data-theme="dark"] .portrait img{
 }
 
 .about-aside{
+  margin: 0;
   border-top: 1px solid var(--line-soft);
-  padding-top: var(--s-6);
+  padding: var(--s-2) var(--s-6) var(--s-5);
 }
 .about-aside-row{
   display: grid;
@@ -720,7 +735,7 @@ html[data-theme="dark"] .portrait img{
   color: var(--ink-mute);
 }
 @media (max-width: 900px){
-  .about-grid{ grid-template-columns: 1fr; gap: var(--s-10) }
+  .about-grid{ grid-template-columns: 1fr; gap: var(--s-8) }
 }
 
 /* ============================================================
@@ -975,7 +990,7 @@ html[data-theme="dark"] .portrait img{
   color: var(--ink-inverse);
 }
 .contact .eyebrow{
-  color: rgba(245,239,228,.55);
+  color: color-mix(in oklab, var(--ink-inverse) 55%, transparent);
 }
 .contact .eyebrow::before{ background: currentColor }
 .contact h2{
@@ -1001,7 +1016,7 @@ html[data-theme="dark"] .portrait img{
   font-size: 11px;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: rgba(245,239,228,.75);
+  color: color-mix(in oklab, var(--ink-inverse) 75%, transparent);
   margin: var(--s-5) 0;
 }
 .status-dot{
@@ -1045,14 +1060,14 @@ html[data-theme="dark"] .portrait img{
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--s-6);
   padding-top: var(--s-7);
-  border-top: 1px solid rgba(245,239,228,.18);
+  border-top: 1px solid color-mix(in oklab, var(--ink-inverse) 18%, transparent);
 }
 .contact-row dt{
   font-family: var(--f-mono);
   font-size: 10px;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: rgba(245,239,228,.55);
+  color: color-mix(in oklab, var(--ink-inverse) 55%, transparent);
   margin-bottom: 8px;
 }
 .contact-row dd{
@@ -1209,6 +1224,12 @@ html[data-theme="dark"] .portrait img{
     overflow: hidden;
   }
   .portrait img{ filter: none !important; }
+  .bio-card{
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    max-width: 60mm !important;
+    break-inside: avoid;
+  }
   /* Typography tightening for paper */
   h1{ font-size: 22pt !important; }
   h2{ font-size: 15pt !important; }
@@ -1299,7 +1320,7 @@ html[data-theme="dark"] .portrait img{
 <section class="hero" aria-labelledby="hero-title">
   <div class="container">
     <p class="eyebrow" data-en="Amsterdam · Designer &amp; operations leader">Amsterdam · Designer en operationeel leider</p>
-    <h1 id="hero-title" data-en-html="Where &lt;em&gt;design&lt;/em&gt; meets organisation.">Op het <em>snijvlak</em> van design en organisatie.</h1>
+    <h1 id="hero-title" data-en-html="Where design &lt;em&gt;meets&lt;/em&gt; operations.">Op het <em>snijvlak</em> van design en organisatie.</h1>
     <p class="hero-lede" data-en="A BSc in Communication &amp; Multimedia Design plus sixteen years of retail experience. I combine a manager's analytical mindset with a designer's thinking, and I am looking for a role where both disciplines strengthen each other.">Bachelor Communicatie en Multimedia Design plus zestien jaar retail-ervaring. Ik combineer het analytisch vermogen van een manager met het ontwerpdenken van een designer, en zoek een rol waar beide disciplines elkaar versterken.</p>
     <dl class="hero-meta">
       <div>
@@ -1326,11 +1347,12 @@ html[data-theme="dark"] .portrait img{
       <div class="about-body reveal">
         <p class="lead-p" data-en="My strength lies in analysing behaviour, processes and data, and translating that into practical, user-centred solutions.">Mijn kracht zit in het analyseren van gedrag, processen en data, en dit vertalen naar praktische, gebruikersgerichte oplossingen.</p>
         <p data-en="I have applied this in digital environments (UX/UI design, wireframing, interface design) as well as in a commercial setting driven by KPIs, customer-behaviour analysis and process optimisation.">Ik heb dit toegepast in zowel digitale omgevingen (UX/UI design, wireframing, interfaceontwerp) als in een commerciële werkcontext met KPI-sturing, klantgedraganalyse en procesoptimalisatie.</p>
-        <p data-en="Sixteen years in retail taught me what an interface or a process on the work floor should do: make the work simpler, not more complicated. I work in a structured way, adapt quickly in changing environments, and draw energy from guiding colleagues in their development. That last part is not a task alongside the work for me, it is the work itself.">Veertien jaar in de retail leerde me wat een interface of een proces op de werkvloer moet doen: het werk eenvoudiger maken, niet ingewikkelder. Ik werk gestructureerd, schakel snel in veranderende omgevingen, en haal energie uit het begeleiden van collega's in hun ontwikkeling. Dat laatste is voor mij geen taak naast het werk, maar het werk zelf.</p>
+        <p data-en="Sixteen years in retail taught me what an interface or a process on the work floor should do: make the work simpler, not more complicated. I work in a structured way, adapt quickly in changing environments, and draw energy from guiding colleagues in their development. That last part is not a task alongside the work for me, it is the work itself.">Zestien jaar in de retail leerde me wat een interface of een proces op de werkvloer moet doen: het werk eenvoudiger maken, niet ingewikkelder. Ik werk gestructureerd, schakel snel in veranderende omgevingen, en haal energie uit het begeleiden van collega's in hun ontwikkeling. Dat laatste is voor mij geen taak naast het werk, maar het werk zelf.</p>
         <p data-en="I am now looking for a role where this combination comes into its own. Positions at the intersection of digital, communication and organisation.">Ik zoek nu een rol waar deze combinatie tot zijn recht komt. Functies op het snijvlak van digitaal, communicatie en organisatie.</p>
         <p data-en="Alongside that, I keep developing myself in design. I follow the field closely, read widely about recent developments, and apply what I learn in practical projects for people around me who can use my help. It keeps my skills sharp and my curiosity awake.">Daarnaast blijf ik mezelf in design ontwikkelen. Ik volg het vak op de voet, lees veel over recente ontwikkelingen, en gebruik wat ik leer in praktische projecten voor mensen in mijn directe omgeving als die mijn hulp kunnen gebruiken. Het houdt mijn vaardigheden scherp en mijn nieuwsgierigheid wakker.</p>
       </div>
       <div class="about-side reveal">
+        <div class="bio-card">
         <figure class="portrait" data-protected="true">
           <picture>
             <source srcset="assets/portrait.webp" type="image/webp" />
@@ -1386,6 +1408,7 @@ html[data-theme="dark"] .portrait img{
             </dd>
           </div>
         </dl>
+        </div>
       </div>
     </div>
   </div>
