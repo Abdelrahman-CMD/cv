@@ -852,6 +852,13 @@ html[data-theme="dark"] .portrait img{
   font-weight: 500;
   color: var(--ink);
 }
+.role-link{
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.role-link:hover{ text-decoration-thickness: 2px }
 
 @media (max-width: 720px){
   .role{ grid-template-columns: 1fr; gap: var(--s-4) }
@@ -1420,10 +1427,27 @@ html[data-theme="dark"] .portrait img{
     <div class="sec-head reveal">
       <p class="eyebrow" data-en="02 · Experience">02 · Werkervaring</p>
       <h2 id="ervaring-title" data-en-html="Sixteen years, &lt;em&gt;two tracks&lt;/em&gt;.">Zestien jaar, <em>twee sporen</em>.</h2>
-      <p class="lede" data-en="A career that starts on the shop floor and grows to management level, with a completed degree and two agency design roles along the way.">Een loopbaan die begint op de werkvloer en doorgroeit naar management-niveau, met daartussen een afgeronde studie en twee design-rollen bij agencies.</p>
+      <p class="lede" data-en="A career that starts on the shop floor and grows to management level, with a completed degree, two agency design roles and ongoing design projects since graduating along the way.">Een loopbaan die begint op de werkvloer en doorgroeit naar management-niveau, met daartussen een afgeronde studie, twee design-rollen bij agencies en doorlopende designprojecten sinds mijn afstuderen.</p>
     </div>
 
     <div class="timeline">
+
+      <article class="role reveal">
+        <div class="role-meta">
+          <span data-en="Jul 2022 · Present">Jul 2022 · Heden</span><span class="location">Amsterdam</span>
+        </div>
+        <div>
+          <h3 class="role-title" data-en-html="Ongoing &lt;em&gt;design projects&lt;/em&gt;">Doorlopende <em>designprojecten</em></h3>
+          <p class="role-company" data-en="Personal and within my network">Persoonlijk en binnen mijn netwerk</p>
+          <p class="role-desc" data-en="Since graduating I have kept designing alongside my work at Jumbo. Personal projects, work for freelancers in my network and projects beyond it. This keeps my design practice active and my skills sharp.">Sinds mijn afstuderen ben ik naast mijn werk bij Jumbo blijven ontwerpen. Persoonlijke projecten, opdrachten voor freelancers in mijn netwerk en projecten daarbuiten. Zo blijft mijn designpraktijk actief en mijn vaardigheden scherp.</p>
+          <ul class="role-list">
+            <li data-en="Personal projects to explore new tools and ways of working">Persoonlijke projecten om nieuwe tools en werkwijzen te verkennen</li>
+            <li data-en="Design work for freelancers within my network">Ontwerpwerk voor freelancers binnen mijn netwerk</li>
+            <li data-en="Projects for people and organisations outside my network">Projecten voor mensen en organisaties buiten mijn netwerk</li>
+          </ul>
+          <p class="role-result" data-en-html="&lt;strong&gt;Want to know more?&lt;/strong&gt; View my work on my &lt;a class=&quot;role-link&quot; href=&quot;https://abdelrahman.nl&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;portfolio website&lt;/a&gt;."><strong>Meer weten?</strong> Bekijk mijn werk op mijn <a class="role-link" href="https://abdelrahman.nl" target="_blank" rel="noopener">portfolio-website</a>.</p>
+        </div>
+      </article>
 
       <article class="role reveal">
         <div class="role-meta">
@@ -1732,7 +1756,7 @@ html[data-theme="dark"] .portrait img{
       </div>
       <div class="contact-row">
         <dt data-en="Design portfolio">Design Portfolio</dt>
-        <dd><a href="mailto:dhr_abdelrahman@outlook.com?subject=Design%20Portfolio%20aanvraag" data-en="On request">Op aanvraag</a></dd>
+        <dd><a href="https://abdelrahman.nl" target="_blank" rel="noopener">abdelrahman.nl</a></dd>
       </div>
     </dl>
     <button class="cv-download" id="cv-download" type="button" aria-label="Download CV als PDF">
