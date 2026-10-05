@@ -300,6 +300,28 @@ h1, h2, h3{ margin: 0; font-weight: 300 }
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-shrink: 0;
+}
+/* De naam krimpt mee met de ruimte die naast de knoppen overblijft:
+   Abdelrahman Ahmed, dan Abdel Ahmed, dan A.A. De knoppen blijven altijd staan. */
+.brand-slot{
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-right: var(--s-4);
+  container-type: inline-size;
+}
+.brand .name-mid,
+.brand .name-short{ display: none }
+@container (max-width: 197px){
+  .brand .name-full{ display: none }
+  .brand .name-mid{ display: inline }
+}
+@container (max-width: 133px){
+  .brand .name-mid{ display: none }
+  .brand .name-short{ display: inline }
+}
+@container (max-width: 50px){
+  .brand .dot{ display: none }
 }
 .nav-icons{
   display: inline-flex;
@@ -468,6 +490,13 @@ h1, h2, h3{ margin: 0; font-weight: 300 }
     height: 44px;
     transform: translate(-50%, -50%);
   }
+}
+
+/* Heel smalle telefoons: alles iets dichter op elkaar, zodat A.A. naast alle knoppen past */
+@media (max-width: 360px){
+  .nav-inner{ padding-left: 12px; padding-right: 10px }
+  .nav-icons{ gap: 4px }
+  .brand-slot{ margin-right: 8px }
 }
 
 /* ============================================================
@@ -746,7 +775,7 @@ html[data-theme="dark"] .portrait img{
   color: var(--ink-mute);
 }
 @media (max-width: 900px){
-  .about-grid{ grid-template-columns: 1fr; gap: var(--s-8) }
+  .about-grid{ grid-template-columns: minmax(0, 1fr); gap: var(--s-8) }
 }
 
 /* ============================================================
@@ -1282,10 +1311,14 @@ html[data-theme="dark"] .portrait img{
 <!-- =========== NAV =========== -->
 <header class="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top" aria-label="Abdelrahman Ahmed · naar boven">
-      <span class="dot"></span>
-      <span>Abdelrahman Ahmed</span>
-    </a>
+    <div class="brand-slot">
+      <a class="brand" href="#top" aria-label="Abdelrahman Ahmed · naar boven">
+        <span class="dot"></span>
+        <span class="name-full">Abdelrahman Ahmed</span>
+        <span class="name-mid" aria-hidden="true">Abdel Ahmed</span>
+        <span class="name-short" aria-hidden="true">A.A.</span>
+      </a>
+    </div>
     <nav class="nav-links" aria-label="Hoofdnavigatie">
       <a href="#over">Over</a>
       <a href="#ervaring">Ervaring</a>
