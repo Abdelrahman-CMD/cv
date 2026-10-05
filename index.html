@@ -285,6 +285,11 @@ h1, h2, h3{ margin: 0; font-weight: 300 }
   font-size: 17px;
   color: var(--ink);
 }
+.brand{ white-space: nowrap }
+/* Volledige naam blijft op één regel: de tekstlinks wijken op smallere schermen */
+@media (max-width: 920px){
+  .nav-links > a{ display: none }
+}
 .brand .dot{
   width: 8px;
   height: 8px;
